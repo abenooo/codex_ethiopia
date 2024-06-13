@@ -1,9 +1,12 @@
-import { Button } from "./components/ui/button";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 
 function App() {
   return (
     <>
-      <Button>Click me</Button>
+      <Outlet />
+      <Footer />
     </>
   );
 }
