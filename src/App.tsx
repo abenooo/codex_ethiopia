@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+import { NavigationMenuDemo } from "./components/Navbar";
 
 function App() {
   return (
     <>
+    <NavigationMenuDemo />
       <Outlet />
       <Footer />
     </>
