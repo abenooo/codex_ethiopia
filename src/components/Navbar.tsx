@@ -10,16 +10,16 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu className="mx-auto">
-      <NavigationMenuList>
+    <NavigationMenu className="mx-auto flex justify-between items-center px-4 py-2 bg-white shadow-md">
+      <div className="text-lg font-bold">CodeX Ethiopia</div>
+      <NavigationMenuList className="flex space-x-4">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>TechnovaTech</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuTrigger>Develop Website</NavigationMenuTrigger>
+          <NavigationMenuContent className="w-[800px]">
+            <ul className="grid gap-3 p-4 md:w-[800px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <ListItem href="/products/ai-assistant" title="AI Assistant">
                   Cutting-edge AI assistant for businesses.
@@ -51,8 +51,8 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent className="w-[800px]">
+            <ul className="grid gap-3 p-4 md:w-[800px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <ListItem href="/solutions/enterprise" title="Enterprise">
                   Tailored solutions for large organizations.
@@ -78,8 +78,8 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Company</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent className="w-[800px]">
+            <ul className="grid gap-3 p-4 md:w-[800px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <ListItem href="/company/about" title="About">
                   Learn about our company and mission.
@@ -105,8 +105,8 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent className="w-[800px]">
+            <ul className="grid gap-3 p-4 md:w-[800px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <ListItem href="/resources/blog" title="Blog">
                   Read our latest articles and insights.
@@ -131,9 +131,9 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Develope Website</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+          <NavigationMenuContent className="w-[800px]">
+            <ul className="grid gap-3 p-4 md:w-[800px] lg:w-[800px] lg:grid-cols-[.75fr_1fr]">
               <ListItem href="#" title="Easily Managed by Client">
                 Every page content is easily updated or managed.
               </ListItem>
@@ -166,10 +166,24 @@ export function NavigationMenuDemo() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        {/* <NavigationMenuItem>
+          <Link to="/contact">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Contact
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem>
+          <Link to="/about">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              About
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <Link to="/login">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <Button className="bg-primary">Signin</Button>
+            <NavigationMenuLink className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              Signin
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
