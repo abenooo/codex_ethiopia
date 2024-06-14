@@ -10,6 +10,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 export function NavigationMenuDemo() {
   return (
@@ -166,23 +167,9 @@ export function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/contact">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Contact
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link to="/about">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
           <Link to="/login">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Signin
+                <Button className="bg-primary">Signin</Button>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
