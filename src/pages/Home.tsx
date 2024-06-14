@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import specialized from "@/data/specialized";
 function Home() {
   const settings = {
     dots: false,
@@ -167,6 +167,21 @@ function Home() {
             <img src="node.png" alt="nodejs" />
           </div>
         </Slider>
+        <p className="text-primary font-medium my-3">Specialized</p>
+        <p className="text-primary text-2xl font-bold mb-6">
+          Specialized Staff We Provide
+        </p>
+        <div className="grid  grid-cols-1 md:grid-cols-4 gap-2  my-5 ">
+          {specialized.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 max-w-xs py-3 rounded-sm border-l-8 border-l-yellow-600 shadow"
+            >
+              <img src={item.img} alt={item.title} className="ml-2" />
+              <p>{item.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
