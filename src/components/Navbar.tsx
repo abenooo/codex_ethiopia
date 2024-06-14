@@ -130,6 +130,28 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <ListItem href="#" title="Easily Managed by Client">
+                Every page content is easily updated or managed.
+              </ListItem>
+              <ListItem href="#" title="Well Organized Contents">
+                We develop digital contents for clients.
+              </ListItem>
+              <ListItem href="#" title="Responsive">
+                Interactive for end users.
+              </ListItem>
+              <ListItem href="#" title="Compatible to All Devices">
+                Phone, Tablet, Laptops.
+              </ListItem>
+              <ListItem href="#" title="Fast Loading">
+                We deliver tested speed.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link to="/blog">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Blog
