@@ -20,14 +20,16 @@ interface SubMenuItem {
 
 export function NavigationMenuDemo() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(null);
+  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(
+    null
+  );
 
   const handleBackClick = () => {
     setActiveSubMenu(null);
   };
 
   const renderSubMenu = (items: SubMenuItem[]) => (
-    <div className="fixed inset-0 bg-white h-screen w-full overflow-auto z-20 pt-12">
+    <div className="md:hidden fixed inset-0 bg-white h-screen w-1/2 overflow-auto z-20 mt-10">
       <button
         className="mb-4 ml-4 mt-4 text-blue-600 hover:text-blue-800 font-semibold"
         onClick={handleBackClick}
@@ -52,7 +54,7 @@ export function NavigationMenuDemo() {
 
   return (
     <nav className="bg-white shadow-md relative">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center fixed top-0 left-0 right-0 bg-white z-30">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <div className="text-lg font-bold">CodeX Ethiopia</div>
         <button
           className="block md:hidden text-black focus:outline-none"
@@ -60,9 +62,7 @@ export function NavigationMenuDemo() {
         >
           {menuOpen ? "✕" : "☰"}
         </button>
-      </div>
-      <div className="md:flex hidden container mx-auto px-4 py-2 space-x-4">
-        <NavigationMenu className="space-x-4">
+        <NavigationMenu className="hidden md:flex space-x-4">
           <NavigationMenuList className="flex space-x-4">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Develop Website</NavigationMenuTrigger>
@@ -248,7 +248,7 @@ export function NavigationMenuDemo() {
         </NavigationMenu>
       </div>
       {menuOpen && (
-        <NavigationMenu className="md:hidden fixed inset-0 bg-white h-screen w-full overflow-auto z-20 pt-16">
+        <NavigationMenu className="md:hidden fixed inset-0 bg-white h-1/2 w-full overflow-auto z-20 mt-10">
           <NavigationMenuList className="flex flex-col space-y-4 p-4">
             {activeSubMenu ? (
               renderSubMenu(activeSubMenu)
