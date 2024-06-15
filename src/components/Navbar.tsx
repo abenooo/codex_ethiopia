@@ -136,7 +136,7 @@ export default function Navbar() {
                     }}
                   >
                     <PackageIcon className="h-5 w-5" />
-                    Technology
+                    Other
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <Link
@@ -144,7 +144,7 @@ export default function Navbar() {
                     className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap"
                   >
                     <MailIcon className="h-5 w-5" />
-                    Contact
+                    technology
                   </Link>
                   
                 </div>
@@ -204,9 +204,9 @@ export default function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link to="/contact">
+            <Link to="/technology">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Contact
+                Technology
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
