@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const technologies = {
@@ -79,55 +79,97 @@ const technologies = {
     { name: "Python", logo: "src/assets/technology/Python.png" },
     { name: "RStudio", logo: "src/assets/technology/Rstudio.png" },
   ],
-  DevOps: [
-    { name: "Go", logo: "src/assets/technology/Go.png" },
-  ],
-  Security: [
-    { name: "OpenCV", logo: "src/assets/technology/OpenCv.png" },
-  ],
+  DevOps: [{ name: "Go", logo: "src/assets/technology/Go.png" }],
+  Security: [{ name: "OpenCV", logo: "src/assets/technology/OpenCv.png" }],
 };
+
+const itemsPerPage = 10; // Display 2 rows of 4 items each
 
 const TechnologyComponent = () => {
   const [activeTab, setActiveTab] = useState("All");
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+  };
+
+  const renderTechnologies = (techList:any) => {
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedTechs = techList.slice(startIndex, endIndex);
+
+    return paginatedTechs.map((tech:any) => (
+      <div
+        key={tech.name}
+        className="flex flex-col items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
+      >
+        <img
+          src={tech.logo}
+          alt={tech.name}
+          className="h-16 w-16 object-contain mb-2"
+        />
+        <span className="text-sm font-medium">{tech.name}</span>
+      </div>
+    ));
+  };
 
   return (
     <div className="container mx-auto px-4 py-6">
       <h1 className="text-3xl font-bold mb-4">Technologies</h1>
       <p className="mb-6 text-gray-600">
-        Using the right technology for the right problem is our mantra. We are
-        agile about learning new processes and tools to save time and reduce
-        complexity.
+        Using the right technology for the right problem is our mantra. This
+        principle drives our commitment to innovation and efficiency. In today’s
+        fast-paced world, staying ahead means constantly evolving. We leverage
+        the latest advancements to tackle challenges head-on.
       </p>
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value)}>
+      <p className="mb-6 text-gray-600">
+        Efficiency and Innovation: Our drive for efficiency and innovation means
+        we streamline workflows, optimize resources, and deliver outstanding
+        results, providing unparalleled value to our clients.
+      </p>
+      <p className="mb-6 text-gray-600">
+        By embracing change and continuously seeking out the best tools and
+        practices, we turn challenges into opportunities, paving the way for a
+        brighter, more efficient future.
+      </p>
+      <Tabs value={activeTab} onValueChange={(value) => {setActiveTab(value); setCurrentPage(0);}}>
         <TabsList className="flex overflow-x-auto whitespace-nowrap border-b mb-4">
           {Object.keys(technologies).map((category) => (
-      <TabsTrigger
-      key={category}
-      value={category}
-      className={`px-4 py-2 text-sm font-medium ${
-        activeTab === category ? "bg-yellow-400 text-black" : ""
-      }`}
-    >
-      {category}
-    </TabsTrigger>
+            <TabsTrigger
+              key={category}
+              value={category}
+              className={`px-4 py-2 text-sm font-medium ${
+                activeTab === category ? "bg-yellow-400 text-black" : ""
+              }`}
+            >
+              {category}
+            </TabsTrigger>
           ))}
         </TabsList>
         {Object.entries(technologies).map(([category, techList]) => (
           <TabsContent key={category} value={category}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {techList.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="flex flex-col items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <img
-                    src={tech.logo}
-                    alt={tech.name}
-                    className="h-16 w-16 object-contain mb-2"
-                  />
-                  <span className="text-sm font-medium">{tech.name}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+              {renderTechnologies(techList)}
+            </div>
+            <div className="flex justify-end gap-5 mt-4">
+              <button
+                onClick={handlePrevPage}
+                disabled={currentPage === 0}
+                className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+              >
+                Prev
+              </button>
+              <button
+                onClick={handleNextPage}
+                disabled={currentPage * itemsPerPage + itemsPerPage >= techList.length}
+                className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+              >
+                Next
+              </button>
             </div>
           </TabsContent>
         ))}
