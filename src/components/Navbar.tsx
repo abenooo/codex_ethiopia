@@ -94,7 +94,7 @@ export default function Navbar() {
     <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
       <Link to="#" className="flex items-center gap-2 font-semibold">
         <MountainIcon className="h-6 w-6" />
-        <span className="hidden lg:flex">Acme Inc</span>
+        <span className="hidden lg:flex">Codex Ethiopia</span>
         <span className="lg:hidden">Codex Ethiopia</span>
       </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
