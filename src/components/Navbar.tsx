@@ -5,7 +5,6 @@ import {
   Sheet,
   SheetTrigger,
   SheetContent,
-  SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,7 +48,7 @@ const automationSubMenu: SubMenuItem[] = [
 ];
 
 const technologySubMenu: SubMenuItem[] = [
-  { href: "/ai", title: "Artificial Intelligence" },
+  { href: "/technology", title: "Backend" },
   { href: "/blockchain", title: "Blockchain" },
   { href: "/cloud-computing", title: "Cloud Computing" },
   { href: "/cyber-security", title: "Cyber Security" },
@@ -91,11 +90,10 @@ export default function Navbar() {
   );
 
   return (
-    <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
+    <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 container">
       <Link to="#" className="flex items-center gap-2 font-semibold">
         <MountainIcon className="h-6 w-6" />
-        <span className="hidden lg:flex">Acme Inc</span>
-        <span className="lg:hidden">Codex Ethiopia</span>
+        <span className="hidden lg:flex ">Codex Ethiopia</span>
       </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger asChild>
@@ -106,67 +104,56 @@ export default function Navbar() {
         </SheetTrigger>
         <SheetContent side="left" className="bg-white dark:bg-gray-950">
           <div className="flex h-full max-h-screen flex-col">
-            <div className="flex h-20 items-center justify-between border-b px-6">
-              <Link to="#" className="flex items-center gap-2 font-semibold">
-                <MountainIcon className="h-6 w-6" />
-                <span className="sr-only">Acme Inc</span>
-              </Link>
-              <SheetClose asChild>
-                <Button variant="outline" size="icon">
-                  <XIcon className="h-6 w-6" />
-                  <span className="sr-only">Close menu</span>
-                </Button>
-              </SheetClose>
-            </div>
             {activeSubMenu ? (
               renderSubMenu(activeSubMenu)
             ) : (
               <nav className="flex-1 overflow-auto py-6">
                 <div className="grid gap-4 px-6">
                   <button
-                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap"
                     onClick={() => {
                       setActiveSubMenu(developWebsiteSubMenu);
                     }}
                   >
                     <HomeIcon className="h-5 w-5" />
-                    <span className="whitespace-nowrap">Develop Website</span>
+                    Develop Website
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <button
-                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap"
                     onClick={() => {
                       setActiveSubMenu(automationSubMenu);
                     }}
                   >
                     <UserIcon className="h-5 w-5" />
-                    <span className="whitespace-nowrap">Automation</span>
+                    Automation
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <button
-                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap"
                     onClick={() => {
                       setActiveSubMenu(technologySubMenu);
                     }}
                   >
                     <PackageIcon className="h-5 w-5" />
-                    <span className="whitespace-nowrap">Technology</span>
+                    Technology
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <Link
-                    to="#"
-                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    to="/technology"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap"
                   >
                     <MailIcon className="h-5 w-5" />
                     Contact
                   </Link>
+                  
                 </div>
               </nav>
             )}
           </div>
         </SheetContent>
       </Sheet>
-      <NavigationMenu className="hidden lg:flex">
+      <NavigationMenu className="hidden lg:flex container">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Develop Website</NavigationMenuTrigger>
@@ -220,6 +207,13 @@ export default function Navbar() {
             <Link to="/contact">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Contact
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link to="/about">
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                About US
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -370,26 +364,6 @@ function UserIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
-    </svg>
-  );
-}
-
-function XIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
     </svg>
   );
 }
