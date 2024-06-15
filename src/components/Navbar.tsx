@@ -94,7 +94,7 @@ export default function Navbar() {
     <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
       <Link to="#" className="flex items-center gap-2 font-semibold">
         <MountainIcon className="h-6 w-6" />
-        <span className="hidden lg:flex">Codex Ethiopia</span>
+        <span className="hidden lg:flex">Acme Inc</span>
         <span className="lg:hidden">Codex Ethiopia</span>
       </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -130,7 +130,7 @@ export default function Navbar() {
                     }}
                   >
                     <HomeIcon className="h-5 w-5" />
-                    Develop Website
+                    <span className="whitespace-nowrap">Develop Website</span>
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <button
@@ -140,7 +140,7 @@ export default function Navbar() {
                     }}
                   >
                     <UserIcon className="h-5 w-5" />
-                    Automation
+                    <span className="whitespace-nowrap">Automation</span>
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <button
@@ -150,7 +150,7 @@ export default function Navbar() {
                     }}
                   >
                     <PackageIcon className="h-5 w-5" />
-                    Technology
+                    <span className="whitespace-nowrap">Technology</span>
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <Link
