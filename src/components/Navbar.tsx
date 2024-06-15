@@ -188,7 +188,7 @@ export default function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Technology</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Service</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {technologySubMenu.map((item) => (
@@ -206,7 +206,7 @@ export default function Navbar() {
           <NavigationMenuItem>
             <Link to="/technology">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Technology
+                Service
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
