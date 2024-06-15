@@ -1,4 +1,5 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import  { useState } from "react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const technologies = {
   All: [
@@ -87,6 +88,8 @@ const technologies = {
 };
 
 const TechnologyComponent = () => {
+  const [activeTab, setActiveTab] = useState("All");
+
   return (
     <div className="container mx-auto px-4 py-6">
       <h1 className="text-3xl font-bold mb-4">Technologies</h1>
@@ -95,16 +98,18 @@ const TechnologyComponent = () => {
         agile about learning new processes and tools to save time and reduce
         complexity.
       </p>
-      <Tabs defaultValue="All">
+      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value)}>
         <TabsList className="flex overflow-x-auto whitespace-nowrap border-b mb-4">
           {Object.keys(technologies).map((category) => (
-            <TabsTrigger
-              key={category}
-              value={category}
-              className="px-4 py-2 text-sm font-medium text-gray-600 border-transparent hover:border-blue-500"
-            >
-              {category}
-            </TabsTrigger>
+      <TabsTrigger
+      key={category}
+      value={category}
+      className={`px-4 py-2 text-sm font-medium ${
+        activeTab === category ? "bg-yellow-400 text-black" : ""
+      }`}
+    >
+      {category}
+    </TabsTrigger>
           ))}
         </TabsList>
         {Object.entries(technologies).map(([category, techList]) => (
