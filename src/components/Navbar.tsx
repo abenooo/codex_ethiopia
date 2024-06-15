@@ -24,7 +24,7 @@ interface SubMenuItem {
   title: string;
 }
 
-const developWebsiteSubMenu = [
+const developWebsiteSubMenu: SubMenuItem[] = [
   { href: "/ecommerce", title: "Ecommerce" },
   { href: "/business-website", title: "Business website" },
   { href: "/blog", title: "Blog" },
@@ -36,7 +36,7 @@ const developWebsiteSubMenu = [
   { href: "/membership-website", title: "Membership website" },
 ];
 
-const automationSubMenu = [
+const automationSubMenu: SubMenuItem[] = [
   { href: "/appium", title: "Appium" },
   { href: "/katalon-studio", title: "Katalon Studio" },
   { href: "/selenium", title: "Selenium" },
@@ -48,7 +48,7 @@ const automationSubMenu = [
   { href: "/ranorex", title: "Ranorex" },
 ];
 
-const technologySubMenu = [
+const technologySubMenu: SubMenuItem[] = [
   { href: "/ai", title: "Artificial Intelligence" },
   { href: "/blockchain", title: "Blockchain" },
   { href: "/cloud-computing", title: "Cloud Computing" },
@@ -91,7 +91,12 @@ export default function Navbar() {
   );
 
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
+    <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
+      <Link to="#" className="flex items-center gap-2 font-semibold">
+        <MountainIcon className="h-6 w-6" />
+        <span className="hidden lg:flex">Acme Inc</span>
+        <span className="lg:hidden">Codex Ethiopia</span>
+      </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="lg:hidden">
@@ -161,13 +166,6 @@ export default function Navbar() {
           </div>
         </SheetContent>
       </Sheet>
-      <Link
-        to="#"
-        className="mr-6 hidden lg:flex items-center gap-2 font-semibold"
-      >
-        <MountainIcon className="h-6 w-6" />
-        <span className="sr-only">Acme Inc</span>
-      </Link>
       <NavigationMenu className="hidden lg:flex">
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -219,9 +217,9 @@ export default function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link to="/docs">
+            <Link to="/contact">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Documentation
+                Contact
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -234,7 +232,7 @@ export default function Navbar() {
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
