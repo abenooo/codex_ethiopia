@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -136,7 +132,7 @@ export default function Navbar() {
                     }}
                   >
                     <PackageIcon className="h-5 w-5" />
-                    Other
+                    Service
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
                   <Link
@@ -146,7 +142,6 @@ export default function Navbar() {
                     <MailIcon className="h-5 w-5" />
                     technology
                   </Link>
-                  
                 </div>
               </nav>
             )}
@@ -206,7 +201,7 @@ export default function Navbar() {
           <NavigationMenuItem>
             <Link to="/technology">
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Service
+                Technology
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -233,12 +228,29 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "flex items-center justify-between rounded-md bg-gray-200 text-gray-700 p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-500 hover:text-white",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="space-y-1">
+            <div className="text-sm font-medium leading-none">{title}</div>
+            {/* Add any additional content here */}
+          </div>
+          <span className="ml-2 text-gray-500 hover:text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
         </a>
       </NavigationMenuLink>
     </li>
