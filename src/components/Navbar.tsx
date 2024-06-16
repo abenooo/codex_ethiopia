@@ -13,7 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { FaChevronRight } from "react-icons/fa";
-
+import imageSrc from "../assets/image.png"
 interface SubMenuItem {
   href: string;
   title: string;
@@ -88,7 +88,8 @@ export default function Navbar() {
   return (
     <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 container">
       <Link to="#" className="flex items-center gap-2 font-semibold">
-        <MountainIcon className="h-6 w-6" />
+        {/* <MountainIcon className="h-6 w-6" /> */}
+        <img src={imageSrc} alt="Image Description" width={32} height={32} />
         <span className="hidden lg:flex ">Codex Ethiopia</span>
       </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
