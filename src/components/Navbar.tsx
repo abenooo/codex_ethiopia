@@ -262,6 +262,18 @@ export default function Navbar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
+            <Link to="/pricing">
+              <NavigationMenuLink
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  location.pathname === "/about" ? "text-blue-600 font-bold" : ""
+                )}
+              >
+                Pricing
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
             <Link to="/about">
               <NavigationMenuLink
                 className={cn(
