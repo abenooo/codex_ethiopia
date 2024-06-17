@@ -1,6 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
+// Importing images
+import image1 from "../assets/Process/image1.gif";
+import image2 from "../assets/Process/image2.gif";
+import image3 from "../assets/Process/image3.gif";
+import image4 from "../assets/Process/image4.gif";
+import image5 from "../assets/Process/image5.gif";
+import image6 from "../assets/Process/image6.png";
+
 const steps = [
   {
     id: 1,
@@ -18,7 +26,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image1.gif"
+    image: image1,
+    alt: "CEO discussing web strategy"
   },
   {
     id: 2,
@@ -35,7 +44,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image2.gif"
+    image: image2,
+    alt: "CEO planning information architecture"
   },
   {
     id: 3,
@@ -53,7 +63,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image3.gif"
+    image: image3,
+    alt: "CEO reviewing professional design"
   },
   {
     id: 4,
@@ -70,7 +81,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image4.gif"
+    image: image4,
+    alt: "CEO overseeing responsive development"
   },
   {
     id: 5,
@@ -88,7 +100,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image5.gif"
+    image: image5,
+    alt: "CEO ensuring quality assurance"
   },
   {
     id: 6,
@@ -105,7 +118,8 @@ const steps = [
         </ul>
       </div>
     ),
-    image: "src/assets/Process/image6.png"
+    image: image6,
+    alt: "CEO discussing launch and optimization"
   }
 ];
 
@@ -126,7 +140,7 @@ const CustomWebsiteDesignProcess = () => {
             onClick={() => setActiveStep(step.id)}
           >
             <div className={`w-16 h-16 flex items-center justify-center rounded-full ${activeStep === step.id ? "bg-blue-100" : "bg-gray-100"}`}>
-              <img src={step.image} alt={step.title} className="w-8 h-8" />
+              <img src={step.image} alt={step.alt} className="w-8 h-8" />
             </div>
             <span className="mt-2 font-semibold text-center">{step.title}</span>
           </div>
@@ -140,7 +154,7 @@ const CustomWebsiteDesignProcess = () => {
                 {step.content}
               </div>
               <div className="w-full md:w-1/2 flex items-center justify-center h-full">
-                <img src={step.image} alt={step.title} className="w-full h-full object-contain" />
+                <img src={step.image} alt={step.alt} className="w-full h-full object-contain" />
               </div>
             </React.Fragment>
           )
