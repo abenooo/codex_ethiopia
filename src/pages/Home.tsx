@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import specialized from "@/data/specialized";
+import CustomWebsiteDesignProcess from "@/components/CustomWebsiteDesignProcess";
 function Home() {
   const settings = {
     dots: false,
@@ -42,6 +43,8 @@ function Home() {
         title="How to Start"
         description="We specialize in helping you build a team of expert developers."
       />
+
+<CustomWebsiteDesignProcess />
       <div className=" max-w-[90%] md:max-w-[70%] mx-auto py-5">
         <div className="max-w-sm">
           <h1 className="text-primary text-2xl font-bold">
