@@ -67,7 +67,7 @@ export default function Navbar() {
   const renderSubMenu = (items: SubMenuItem[]) => (
     <div className="flex-1 overflow-auto py-6">
       <button
-        className="mb-4 ml-4 mt-4 text-blue-600 hover:text-blue-800 font-semibold"
+        className="mb-4 ml-4 mt-4 text-blue-600 bg-gray-100 hover:text-blue-800 font-semibold"
         onClick={handleBackClick}
       >
         ← Back
@@ -130,7 +130,7 @@ export default function Navbar() {
                       location.pathname.startsWith("/education") ||
                       location.pathname.startsWith("/nonprofit-website") ||
                       location.pathname.startsWith("/membership-website")
-                        ? "text-blue-600 font-bold"
+                        ? "text-blue-600 bg-gray-100 font-bold"
                         : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
@@ -152,7 +152,7 @@ export default function Navbar() {
                       location.pathname.startsWith("/robot-framework") ||
                       location.pathname.startsWith("/testrigor") ||
                       location.pathname.startsWith("/ranorex")
-                        ? "text-blue-600 font-bold"
+                        ? "text-blue-600 bg-gray-100 font-bold"
                         : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
@@ -171,7 +171,7 @@ export default function Navbar() {
                       location.pathname.startsWith("/cyber-security") ||
                       location.pathname.startsWith("/iot") ||
                       location.pathname.startsWith("/machine-learning")
-                        ? "text-blue-600 font-bold"
+                        ? "text-blue-600 bg-gray-100 font-bold"
                         : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
@@ -186,7 +186,7 @@ export default function Navbar() {
                     to="/technology"
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/technology"
-                        ? "text-blue-600 font-bold"
+                        ? "text-blue-600 bg-gray-100 font-bold"
                         : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                     }`}
                   >
@@ -254,7 +254,7 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/technology" ? "text-blue-600 font-bold" : ""
+                  location.pathname === "/technology" ? "text-blue-600 bg-gray-100 font-bold" : ""
                 )}
               >
                 Technology
@@ -266,7 +266,7 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/about" ? "text-blue-600 font-bold" : ""
+                  location.pathname === "/pricing" ? "text-blue-600 bg-gray-100 font-bold" : ""
                 )}
               >
                 Pricing
@@ -278,7 +278,7 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/about" ? "text-blue-600 font-bold" : ""
+                  location.pathname === "/about" ? "text-blue-600 bg-gray-100 font-bold" : ""
                 )}
               >
                 About Us
