@@ -133,12 +133,12 @@ const TechnologyComponent = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   };
 
-  const renderTechnologies = (techList:any) => {
+  const renderTechnologies = (techList: any) => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const paginatedTechs = techList.slice(startIndex, endIndex);
 
-    return paginatedTechs.map((tech:any) => (
+    return paginatedTechs.map((tech: any) => (
       <div
         key={tech.name}
         className="flex flex-col items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
@@ -172,15 +172,23 @@ const TechnologyComponent = () => {
         practices, we turn challenges into opportunities, paving the way for a
         brighter, more efficient future.
       </p>
-      <Tabs value={activeTab} onValueChange={(value) => {setActiveTab(value); setCurrentPage(0);}}>
-        <TabsList className="flex overflow-x-auto whitespace-nowrap border-b mb-4">
+      <Tabs
+        value={activeTab}
+        onValueChange={(value) => {
+          setActiveTab(value);
+          setCurrentPage(0);
+        }}
+      >
+        <TabsList className="flex overflow-x-auto whitespace-nowrap  py-6">
           {Object.keys(technologies).map((category) => (
             <TabsTrigger
               key={category}
               value={category}
-              className={`px-4 py-2 text-sm font-medium ${
-                activeTab === category ? "bg-yellow-400 text-black" : ""
-              }`}
+              className={`px-4 py-2 mt-3 text-sm font-medium rounded-full ${
+                activeTab === category
+                  ? "bg-white text-black"
+                  : "bg-gray-700 text-white"
+              } mx-2`}
             >
               {category}
             </TabsTrigger>
@@ -201,7 +209,9 @@ const TechnologyComponent = () => {
               </button>
               <button
                 onClick={handleNextPage}
-                disabled={currentPage * itemsPerPage + itemsPerPage >= techList.length}
+                disabled={
+                  currentPage * itemsPerPage + itemsPerPage >= techList.length
+                }
                 className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
               >
                 Next
