@@ -6,10 +6,11 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { FaRobot } from "react-icons/fa";
 import Imgsource from "../assets/image.png";
+
 export default function Chatbot() {
   const [messages, setMessages] = useState([
     {
@@ -57,79 +58,90 @@ export default function Chatbot() {
       {isOpen ? (
         <div className="fixed bottom-4 right-4 w-full max-w-md mx-auto shadow-lg">
           <Card className="w-full">
-            <CardHeader className="flex items-center justify-between bg-blue-600  p-4 rounded-t-lg">
+            <CardHeader className="flex items-center justify-between bg-gradient-to-r from-blue-500 to-indigo-500 p-4 rounded-t-lg shadow-lg">
               <div className="flex items-center space-x-4">
-                <Avatar>
+                <Avatar className="w-12 h-12 shrink-0">
                   <AvatarImage src="/placeholder-user.jpg" />
                   <AvatarFallback>
-                    <img src={Imgsource} />
+                    <img src={Imgsource} alt="CodeX Avatar" />
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">CodeX</p>
-                  <p className="text-sm">Your Friendly Assistant bot</p>
+                  <p className="text-lg font-semibold text-white">CodeX</p>
+                  <p className="text-sm text-gray-200">
+                    Your Friendly Assistant bot
+                  </p>
                 </div>
-
-                <Button onClick={toggleChatbot}  className="text-white">
-                <span className="sr-only">Close</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+                <Button
+                  onClick={toggleChatbot}
+                  className="text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.54-9.54a.75.75 0 10-1.06 1.06L10 11.06l-2.47-2.54a.75.75 0 00-1.06 1.06L8.94 12l-2.54 2.47a.75.75 0 101.06 1.06L10 12.94l2.47 2.54a.75.75 0 001.06-1.06L11.06 12l2.54-2.47z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </Button>
+                  <span className="sr-only">Close</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.54-9.54a.75.75 0 10-1.06 1.06L10 11.06l-2.47-2.54a.75.75 0 00-1.06 1.06L8.94 12l-2.54 2.47a.75.75 0 101.06 1.06L10 12.94l2.47 2.54a.75.75 0 001.06-1.06L11.06 12l2.54-2.47z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Button>
               </div>
             </CardHeader>
-            <CardContent className="flex flex-col gap-4 p-4">
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
-                    message.isUser
-                      ? "ml-auto bg-blue-600 text-white"
-                      : "bg-gray-100 dark:bg-gray-800"
-                  }`}
-                >
-                  {message.content}
-                </div>
-              ))}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Button variant="outline" className="flex-1">
-                  Hire For My Project
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Want To Know More
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Looking for Job
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  Just Browsing
-                </Button>
+
+            <CardContent className="flex-1 overflow-auto p-4">
+              <div className="flex flex-col gap-4">
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${
+                      message.isUser ? "justify-end" : ""
+                    } items-start gap-3`}
+                  >
+                    {!message.isUser && (
+                      <Avatar className="w-8 h-8 shrink-0">
+                        <AvatarImage src="/placeholder-user.jpg" />
+                        <AvatarFallback>U</AvatarFallback>
+                      </Avatar>
+                    )}
+                    <div
+                      className={`${
+                        message.isUser
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted"
+                      } rounded-lg p-3 max-w-[70%]`}
+                    >
+                      <p>{message.content}</p>
+                    </div>
+                    {message.isUser && (
+                      <Avatar className="w-8 h-8 shrink-0">
+                        <AvatarImage src="/placeholder-user.jpg" />
+                        <AvatarFallback>A</AvatarFallback>
+                      </Avatar>
+                    )}
+                  </div>
+                ))}
               </div>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="border-t border-border p-2 flex items-center gap-2">
               <form
                 onSubmit={handleSubmit}
                 className="flex items-center w-full space-x-2"
               >
-                <Input
+                <Textarea
                   id="message"
                   placeholder="Type your message..."
-                  className="flex-1"
+                  className="flex-1 resize-none rounded-lg p-2 border border-border focus:border-primary focus:ring-primary"
                   value={inputValue}
                   onChange={handleInputChange}
                   autoComplete="off"
                 />
-                <Button type="submit" size="icon">
-                  <SendIcon className="w-4 h-4" />
+                <Button type="submit" className="shrink-0">
+                  <SendIcon className="w-5 h-5" />
                   <span className="sr-only">Send</span>
                 </Button>
               </form>
