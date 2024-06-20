@@ -105,7 +105,7 @@ export default function Chatbot() {
                     {!message.isUser && (
                       <Avatar className="w-8 h-8 shrink-0">
                         <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>U</AvatarFallback>
+                        <AvatarFallback>Bot</AvatarFallback>
                       </Avatar>
                     )}
                     <div
@@ -120,7 +120,7 @@ export default function Chatbot() {
                     {message.isUser && (
                       <Avatar className="w-8 h-8 shrink-0">
                         <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>A</AvatarFallback>
+                        <AvatarFallback>User</AvatarFallback>
                       </Avatar>
                     )}
                   </div>
