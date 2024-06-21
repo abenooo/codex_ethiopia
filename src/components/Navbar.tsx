@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -55,13 +55,17 @@ const technologySubMenu: SubMenuItem[] = [
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(
-    null
-  );
+  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(null);
 
   const handleBackClick = () => {
     setActiveSubMenu(null);
+  };
+
+  const handleLinkClick = (href: string) => {
+    setMenuOpen(false);
+    navigate(href);
   };
 
   const renderSubMenu = (items: SubMenuItem[]) => (
@@ -75,24 +79,21 @@ export default function Navbar() {
       <ul className="space-y-2 p-4">
         {items.map((item, index) => (
           <li key={index}>
-            <Link to={item.href}>
-              <div
-                className={`flex justify-between items-center text-left w-full p-4 rounded-lg font-medium ${
-                  location.pathname === item.href
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-100 hover:bg-gray-200"
+            <button
+              onClick={() => handleLinkClick(item.href)}
+              className={`flex justify-between items-center text-left w-full p-4 rounded-lg font-medium ${
+                location.pathname === item.href
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-100 hover:bg-gray-200"
+              }`}
+            >
+              {item.title}
+              <FaChevronRight
+                className={`ml-2 h-5 w-5 ${
+                  location.pathname === item.href ? "text-white" : "text-gray-500"
                 }`}
-              >
-                {item.title}
-                <FaChevronRight
-                  className={`ml-2 h-5 w-5 ${
-                    location.pathname === item.href
-                      ? "text-white"
-                      : "text-gray-500"
-                  }`}
-                />
-              </div>
-            </Link>
+              />
+            </button>
           </li>
         ))}
       </ul>
@@ -102,8 +103,9 @@ export default function Navbar() {
   return (
     <header className="flex h-20 w-full shrink-0 items-center justify-between px-4 md:px-6 container">
       <Link to="/" className="flex items-center gap-2 font-semibold">
+        <span className="lg:hidden">Codex Ethiopia</span>
         <img src={imageSrc} alt="Image Description" width={32} height={32} />
-        <span className="hidden lg:flex ">Codex Ethiopia</span>
+        <span className="hidden lg:flex">Codex Ethiopia</span>
       </Link>
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger asChild>
@@ -112,8 +114,14 @@ export default function Navbar() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="bg-white dark:bg-gray-950">
+        <SheetContent side="left" className={`bg-white dark:bg-gray-950 ${menuOpen ? 'animate-slideIn' : 'animate-slideOut'}`}>
           <div className="flex h-full max-h-screen flex-col">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-800">
+              <span>Codex Ethiopia</span>
+              <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)}>
+                <MenuIcon className="h-6 w-6" />
+              </Button>
+            </div>
             {activeSubMenu ? (
               renderSubMenu(activeSubMenu)
             ) : (
@@ -182,18 +190,43 @@ export default function Navbar() {
                     Service
                     <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
                   </button>
-                  <Link
-                    to="/technology"
+                  <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/technology"
                         ? "text-blue-600 bg-gray-100 font-bold"
                         : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                     }`}
+                    onClick={() => handleLinkClick("/technology")}
                   >
                     <MailIcon className="h-5 w-5" />
                     Technology
-                  </Link>
+                  </button>
+                  <button
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
+                      location.pathname === "/pricing"
+                        ? "text-blue-600 bg-gray-100 font-bold"
+                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    }`}
+                    onClick={() => handleLinkClick("/pricing")}
+                  >
+                    <PriceIcon className="h-5 w-5" />
+                    Pricing
+                  </button>
+                  <button
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
+                      location.pathname === "/about"
+                        ? "text-blue-600 bg-gray-100 font-bold"
+                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    }`}
+                    onClick={() => handleLinkClick("/about")}
+                  >
+                    <AboutIcon className="h-5 w-5" />
+                    About Us
+                  </button>
                 </div>
+                <Button className="mt-5 text-center w-full" onClick={() => handleLinkClick("/login")}>
+                  Signin
+                </Button>
               </nav>
             )}
           </div>
@@ -206,11 +239,7 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {developWebsiteSubMenu.map((item) => (
-                  <ListItem
-                    key={item.title}
-                    title={item.title}
-                    href={item.href}
-                  >
+                  <ListItem key={item.title} title={item.title} href={item.href}>
                     {item.title}
                   </ListItem>
                 ))}
@@ -222,11 +251,7 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {automationSubMenu.map((item) => (
-                  <ListItem
-                    key={item.title}
-                    title={item.title}
-                    href={item.href}
-                  >
+                  <ListItem key={item.title} title={item.title} href={item.href}>
                     {item.title}
                   </ListItem>
                 ))}
@@ -238,11 +263,7 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {technologySubMenu.map((item) => (
-                  <ListItem
-                    key={item.title}
-                    title={item.title}
-                    href={item.href}
-                  >
+                  <ListItem key={item.title} title={item.title} href={item.href}>
                     {item.title}
                   </ListItem>
                 ))}
@@ -285,6 +306,11 @@ export default function Navbar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button className="ml-10 text-center w-full" onClick={() => handleLinkClick("/login")}>
+              Login
+            </Button>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
@@ -314,11 +340,7 @@ const ListItem = React.forwardRef<
           <div className="space-y-1">
             <div className="text-sm font-medium leading-none">{title}</div>
           </div>
-          <span
-            className={`ml-2 ${
-              location.pathname === href ? "text-white" : "text-gray-500"
-            }`}
-          >
+          <span className={`ml-2 ${location.pathname === href ? "text-white" : "text-gray-500"}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -373,8 +395,48 @@ function MailIcon(props: React.SVGProps<SVGSVGElement>) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <rect width="20" height="16" x="2" y="4" rx="2" ry="2" />
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+// price icon
+function PriceIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 12h18M3 6h18M3 18h18" />
+    </svg>
+  );
+}
+// about icon
+function AboutIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12" y2="8" />
     </svg>
   );
 }
@@ -399,25 +461,6 @@ function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-// function MountainIcon(props: React.SVGProps<SVGSVGElement>) {
-//   return (
-//     <svg
-//       {...props}
-//       xmlns="http://www.w3.org/2000/svg"
-//       width="24"
-//       height="24"
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="2"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//     >
-//       <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-//     </svg>
-//   );
-// }
 
 function PackageIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
