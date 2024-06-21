@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import androidLogo from "../assets/technology/Andriod.png";
 import angularLogo from "../assets/technology/Angular.png";
-import csharpLogo from "../assets/technology/Csharp.png";
-import cppLogo from "../assets/technology/C++.png";
 import cssLogo from "../assets/technology/Css.png";
 import djangoLogo from "../assets/technology/Django.png";
 import expressLogo from "../assets/technology/Express.png";
@@ -34,21 +32,17 @@ import redisLogo from "../assets/technology/Redis.png";
 import rstudioLogo from "../assets/technology/Rstudio.png";
 import springLogo from "../assets/technology/Spring.png";
 import sqlServerLogo from "../assets/technology/Sql server.png";
-import symfonyLogo from "../assets/technology/Symfony.png";
 import vueLogo from "../assets/technology/Vue.png";
 
 const technologies = {
   All: [
     { name: "Android", logo: androidLogo },
     { name: "Angular", logo: angularLogo },
-    { name: "C#", logo: csharpLogo },
-    { name: "C++", logo: cppLogo },
     { name: "CSS", logo: cssLogo },
     { name: "Django", logo: djangoLogo },
     { name: "Express", logo: expressLogo },
     { name: "ExpressJs", logo: expressJsLogo },
     { name: "Flutter", logo: flutterLogo },
-    { name: "Go", logo: goLogo },
     { name: "Hadoop", logo: hadoopLogo },
     { name: "HTML", logo: htmlLogo },
     { name: "Ionic", logo: ionicLogo },
@@ -70,10 +64,8 @@ const technologies = {
     { name: "React Native", logo: reactNativeLogo },
     { name: "React", logo: reactLogo },
     { name: "Redis", logo: redisLogo },
-    { name: "RStudio", logo: rstudioLogo },
     { name: "Spring", logo: springLogo },
     { name: "SQL Server", logo: sqlServerLogo },
-    { name: "Symfony", logo: symfonyLogo },
     { name: "Vue.js", logo: vueLogo },
   ],
   Frontend: [
@@ -84,21 +76,16 @@ const technologies = {
     { name: "Vue.js", logo: vueLogo },
   ],
   Backend: [
-    { name: "C#", logo: csharpLogo },
-    { name: "C++", logo: cppLogo },
     { name: "Django", logo: djangoLogo },
     { name: "Express", logo: expressLogo },
     { name: "Node.js", logo: nodeLogo },
     { name: "PHP", logo: phpLogo },
     { name: "Spring", logo: springLogo },
-    { name: "Symfony", logo: symfonyLogo },
   ],
   MobileApp: [
     { name: "Android", logo: androidLogo },
     { name: "Flutter", logo: flutterLogo },
-    { name: "iOS", logo: iosLogo },
     { name: "React Native", logo: reactNativeLogo },
-    { name: "Ionic", logo: ionicLogo },
     { name: "Kotlin", logo: kotlinLogo },
   ],
   Database: [
@@ -110,7 +97,6 @@ const technologies = {
     { name: "SQL Server", logo: sqlServerLogo },
   ],
   DataScience: [
-    { name: "Hadoop", logo: hadoopLogo },
     { name: "Power BI", logo: powerBiLogo },
     { name: "Python", logo: pythonLogo },
     { name: "RStudio", logo: rstudioLogo },
