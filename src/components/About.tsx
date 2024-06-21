@@ -13,7 +13,7 @@ export default function About() {
               </p>
             </div>
             <div className="w-full max-w-full space-y-4 mx-auto">
-              <div className="grid grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
                   <div className="p-2 bg-gray-100 rounded-full">
                     <InboxIcon className="text-gray-700 h-6 w-6 mb-2" />
@@ -38,7 +38,7 @@ export default function About() {
                     <SettingsIcon className="text-gray-700 h-6 w-6 mb-2" />
                   </div>
                   <h2 className="text-xl font-bold text-gray-900">Advanced Customization</h2>
-                  <p className="text-gray-700">
+                  <p className= "text-gray-700">
                     With Advanced Customization, you can personalize your email client to suit your preferences and work
                     style.
                   </p>
