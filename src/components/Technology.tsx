@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import androidLogo from "../assets/technology/Andriod.png";
 import angularLogo from "../assets/technology/Angular.png";
-import csharpLogo from "../assets/technology/Csharp.png";
-import cppLogo from "../assets/technology/C++.png";
 import cssLogo from "../assets/technology/Css.png";
 import djangoLogo from "../assets/technology/Django.png";
 import expressLogo from "../assets/technology/Express.png";
@@ -34,7 +32,6 @@ import redisLogo from "../assets/technology/Redis.png";
 import rstudioLogo from "../assets/technology/Rstudio.png";
 import springLogo from "../assets/technology/Spring.png";
 import sqlServerLogo from "../assets/technology/Sql server.png";
-import symfonyLogo from "../assets/technology/Symfony.png";
 import vueLogo from "../assets/technology/Vue.png";
 
 const technologies = {
