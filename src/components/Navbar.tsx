@@ -114,7 +114,7 @@ export default function Navbar() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className={`bg-white dark:bg-gray-950 ${menuOpen ? 'animate-slideIn' : 'animate-slideOut'}`}>
+        <SheetContent side="left" className="bg-white dark:bg-gray-950">
           <div className="flex h-full max-h-screen flex-col">
             <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-800">
               <span>Codex Ethiopia</span>
@@ -223,10 +223,18 @@ export default function Navbar() {
                     <AboutIcon className="h-5 w-5" />
                     About Us
                   </button>
+                  <button
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
+                      location.pathname === "/login"
+                        ? "text-blue-600 bg-gray-100 font-bold"
+                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                    }`}
+                    onClick={() => handleLinkClick("/login")}
+                  >
+                    <SignInIcon className="h-5 w-5" />
+                   Signin
+                  </button>
                 </div>
-                <Button className="mt-5 text-center w-full" onClick={() => handleLinkClick("/login")}>
-                  Signin
-                </Button>
               </nav>
             )}
           </div>
@@ -307,8 +315,10 @@ export default function Navbar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Button className="ml-10 text-center w-full" onClick={() => handleLinkClick("/login")}>
-              Login
+            <Button className="ml-10 text-center w-full">
+              <Link to="/login">
+                <NavigationMenuLink>Login</NavigationMenuLink>
+              </Link>
             </Button>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -440,6 +450,28 @@ function AboutIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+// sign i icon
+function SignInIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="18" height="18" /> {/* Outer square */}
+      <path d="M12 7l5 5-5 5" /> {/* Arrow */}
+      <path d="M17 12H7" /> {/* Line that extends the arrow across the box */}
+    </svg>
+  );
+}
+
 
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
