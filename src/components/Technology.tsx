@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import androidLogo from "../assets/technology/Andriod.png";
 import angularLogo from "../assets/technology/Angular.png";
@@ -105,11 +105,26 @@ const technologies = {
   Security: [{ name: "OpenCV", logo: openCvLogo }],
 };
 
-const itemsPerPage = 10; // Display 2 rows of 4 items each
+const largeItemsPerPage = 10;
+const smallItemsPerPage = 3;
 
 const TechnologyComponent = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(largeItemsPerPage);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth <= 640) {
+        setItemsPerPage(smallItemsPerPage);
+      } else {
+        setItemsPerPage(largeItemsPerPage);
+      }
+    };
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -140,7 +155,7 @@ const TechnologyComponent = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="container mx-auto px-4 py-6 bg-white">
       <h1 className="text-3xl font-bold mb-4">Technologies</h1>
       <p className="mb-6 text-gray-600">
         Using the right technology for the right problem is our mantra. This
@@ -165,7 +180,7 @@ const TechnologyComponent = () => {
           setCurrentPage(0);
         }}
       >
-        <TabsList className="flex overflow-x-auto whitespace-nowrap  py-6">
+        <TabsList className="flex overflow-x-auto whitespace-nowrap py-6">
           {Object.keys(technologies).map((category) => (
             <TabsTrigger
               key={category}
@@ -182,14 +197,14 @@ const TechnologyComponent = () => {
         </TabsList>
         {Object.entries(technologies).map(([category, techList]) => (
           <TabsContent key={category} value={category}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {renderTechnologies(techList)}
             </div>
             <div className="flex justify-end gap-5 mt-4">
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-primary text-white rounded disabled:opacity-50"
               >
                 Prev
               </button>
@@ -198,7 +213,7 @@ const TechnologyComponent = () => {
                 disabled={
                   currentPage * itemsPerPage + itemsPerPage >= techList.length
                 }
-                className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-primary text-white  rounded disabled:opacity-50"
               >
                 Next
               </button>

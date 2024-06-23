@@ -1,15 +1,5 @@
 import { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { FaRobot } from "react-icons/fa";
-import Imgsource from "../assets/image.png";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -23,11 +13,11 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e:any) => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     if (inputValue.trim() !== "") {
       setMessages([
@@ -57,43 +47,36 @@ export default function Chatbot() {
     <>
       {isOpen ? (
         <div className="fixed bottom-4 right-4 w-full max-w-md mx-auto shadow-lg">
-          <Card className="w-full">
-            <CardHeader className="flex items-center justify-between bg-gradient-to-r from-blue-500 to-indigo-500 p-4 rounded-t-lg shadow-lg">
-              <div className="flex items-center space-x-4">
-                <Avatar className="w-12 h-12 shrink-0">
-                  <AvatarImage src="/placeholder-user.jpg" />
-                  <AvatarFallback>
-                    <img src={Imgsource} alt="CodeX Avatar" />
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-lg font-semibold text-white">CodeX</p>
-                  <p className="text-sm text-gray-200">
-                    Your Friendly Assistant bot
-                  </p>
-                </div>
-                <Button
-                  onClick={toggleChatbot}
-                  className="text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  <span className="sr-only">Close</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.54-9.54a.75.75 0 10-1.06 1.06L10 11.06l-2.47-2.54a.75.75 0 00-1.06 1.06L8.94 12l-2.54 2.47a.75.75 0 101.06 1.06L10 12.94l2.47 2.54a.75.75 0 001.06-1.06L11.06 12l2.54-2.47z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </Button>
-              </div>
-            </CardHeader>
+          <div className="flex flex-col h-[90vh] max-w-2xl mx-auto bg-[#f1f1f1] rounded-2xl shadow-lg">
+          <header className="bg-[#4CAF50] text-white px-4 py-3 flex items-center justify-between rounded-t-2xl">
+  <div className="flex items-center gap-3">
+    <div className="w-8 h-8 rounded-full bg-[#fff] flex items-center justify-center text-2xl font-bold text-[#4CAF50]">
+      C
+    </div>
+    <h2 className="text-lg font-bold">CodeX</h2>
+  </div>
+  <div className="w-8 h-8 rounded-full bg-[#fff] flex items-center justify-center">
+    <button
+      onClick={toggleChatbot}
+      className="text-[#4CAF50] hover:text-[#388E3C] focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.54-9.54a.75.75 0 10-1.06 1.06L10 11.06l-2.47-2.54a.75.75 0 00-1.06 1.06L8.94 12l-2.54 2.47a.75.75 0 101.06 1.06L10 12.94l2.47 2.54a.75.75 0 001.06-1.06L11.06 12l2.54-2.47z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>
+</header>
 
-            <CardContent className="flex-1 overflow-auto p-4">
+            <div className="flex-1 overflow-auto p-4 bg-[#f1f1f1]">
               <div className="flex flex-col gap-4">
                 {messages.map((message) => (
                   <div
@@ -103,66 +86,68 @@ export default function Chatbot() {
                     } items-start gap-3`}
                   >
                     {!message.isUser && (
-                      <Avatar className="w-8 h-8 shrink-0">
-                        <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>Bot</AvatarFallback>
-                      </Avatar>
+                      <div className="w-10 h-10 rounded-full bg-[#4CAF50] flex items-center justify-center text-3xl font-bold text-white">
+                        C
+                      </div>
                     )}
                     <div
                       className={`${
                         message.isUser
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted"
-                      } rounded-lg p-3 max-w-[70%]`}
+                          ? "bg-[#4CAF50] text-white"
+                          : "bg-white"
+                      } rounded-2xl p-3 max-w-[70%]`}
                     >
-                      <p>{message.content}</p>
+                      <p className="text-sm">{message.content}</p>
                     </div>
                     {message.isUser && (
-                      <Avatar className="w-8 h-8 shrink-0">
-                        <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>User</AvatarFallback>
-                      </Avatar>
+                      <div className="w-10 h-10 rounded-full bg-[#4CAF50] flex items-center justify-center text-3xl font-bold text-white">
+                        U
+                      </div>
                     )}
                   </div>
                 ))}
               </div>
-            </CardContent>
-            <CardFooter className="border-t border-border p-2 flex items-center gap-2">
+            </div>
+            <div className="bg-white p-3 flex items-center rounded-b-2xl">
               <form
                 onSubmit={handleSubmit}
                 className="flex items-center w-full space-x-2"
               >
-                <Textarea
+                <textarea
                   id="message"
                   placeholder="Type your message..."
-                  className="flex-1 resize-none rounded-lg p-2 border border-border focus:border-primary focus:ring-primary"
+                  className="flex-1 resize-none border-none outline-none text-sm rounded-lg p-2 ml-2"
                   value={inputValue}
                   onChange={handleInputChange}
                   autoComplete="off"
+                  rows={2}
+                  style={{ height: "auto" }}
                 />
-                <Button type="submit" className="shrink-0">
+                <button
+                  type="submit"
+                  className="bg-[#4CAF50] text-white rounded-full p-2"
+                >
                   <SendIcon className="w-5 h-5" />
-                  <span className="sr-only">Send</span>
-                </Button>
+                </button>
               </form>
-            </CardFooter>
-          </Card>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="fixed bottom-4 right-4">
-          <Button
+          <button
             onClick={toggleChatbot}
             className="rounded-full p-3 bg-blue-600 text-white shadow-lg"
           >
             <FaRobot className="w-6 h-6" />
-          </Button>
+          </button>
         </div>
       )}
     </>
   );
 }
 
-function SendIcon(props: any) {
+function SendIcon(props:any) {
   return (
     <svg
       {...props}
