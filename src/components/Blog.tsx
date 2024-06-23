@@ -15,7 +15,7 @@ const getRandomImageIds = (num: number) => {
   return ids;
 };
 
-const Component: FC = () => {
+const Blog: FC = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [mainImage, setMainImage] = useState<Image | null>(null);
 
@@ -78,4 +78,4 @@ const Component: FC = () => {
   );
 };
 
-export default Component;
+export default Blog;
