@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import axios from 'axios';
+import BlogLoading from './BlogLoading';
 
 interface Image {
   id: string;
@@ -41,7 +42,9 @@ const Blog: FC = () => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <section className="w-full md:py-24 lg:py-16">
+      <div className="container px-4 md:px-6">
+    <div className="w-full  mx-auto">
       {mainImage ? (
         <div className="relative aspect-video overflow-hidden rounded-lg">
           <img
@@ -53,9 +56,7 @@ const Blog: FC = () => {
           />
         </div>
       ) : (
-        <div className="relative aspect-video overflow-hidden rounded-lg bg-gray-200">
-          Loading...
-        </div>
+       <BlogLoading />
       )}
       <div className="grid grid-cols-6 gap-2 mt-4">
         {images.map((image) => (
@@ -75,6 +76,8 @@ const Blog: FC = () => {
         ))}
       </div>
     </div>
+    </div>
+    </section>
   );
 };
 
