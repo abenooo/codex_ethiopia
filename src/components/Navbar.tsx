@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { FaChevronRight } from "react-icons/fa";
 import imageSrc from "../assets/image.png";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "./DarkTheme";
 
 interface SubMenuItem {
   href: string;
@@ -57,7 +59,18 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(null);
+  const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(
+    null
+  );
+  const { setTheme } = useTheme();
+  const themes=  localStorage.getItem("vite-ui-theme")
+  const toggleTheme = () => {
+    if (themes === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
 
   const handleBackClick = () => {
     setActiveSubMenu(null);
@@ -90,7 +103,9 @@ export default function Navbar() {
               {item.title}
               <FaChevronRight
                 className={`ml-2 h-5 w-5 ${
-                  location.pathname === item.href ? "text-white" : "text-gray-500"
+                  location.pathname === item.href
+                    ? "text-white"
+                    : "text-gray-500"
                 }`}
               />
             </button>
@@ -118,7 +133,11 @@ export default function Navbar() {
           <div className="flex h-full max-h-screen flex-col">
             <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-800">
               <span>Codex Ethiopia</span>
-              <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMenuOpen(false)}
+              >
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </div>
@@ -232,8 +251,22 @@ export default function Navbar() {
                     onClick={() => handleLinkClick("/login")}
                   >
                     <SignInIcon className="h-5 w-5" />
-                   Signin
+                    Signin
                   </button>
+
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="w-full "
+                    onClick={toggleTheme}
+                  >
+                    {themes === "light" ? (
+                      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    ) : (
+                      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    )}
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
                 </div>
               </nav>
             )}
@@ -247,7 +280,11 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {developWebsiteSubMenu.map((item) => (
-                  <ListItem key={item.title} title={item.title} href={item.href}>
+                  <ListItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
                     {item.title}
                   </ListItem>
                 ))}
@@ -259,7 +296,11 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {automationSubMenu.map((item) => (
-                  <ListItem key={item.title} title={item.title} href={item.href}>
+                  <ListItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
                     {item.title}
                   </ListItem>
                 ))}
@@ -271,7 +312,11 @@ export default function Navbar() {
             <NavigationMenuContent>
               <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {technologySubMenu.map((item) => (
-                  <ListItem key={item.title} title={item.title} href={item.href}>
+                  <ListItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
                     {item.title}
                   </ListItem>
                 ))}
@@ -283,7 +328,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/technology" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/technology"
+                    ? "text-blue-600 bg-gray-100 font-bold"
+                    : ""
                 )}
               >
                 Technology
@@ -295,7 +342,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/pricing" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/pricing"
+                    ? "text-blue-600 bg-gray-100 font-bold"
+                    : ""
                 )}
               >
                 Pricing
@@ -307,7 +356,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/about" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/about"
+                    ? "text-blue-600 bg-gray-100 font-bold"
+                    : ""
                 )}
               >
                 About Us
@@ -319,6 +370,21 @@ export default function Navbar() {
               <Link to="/login">
                 <NavigationMenuLink>Login</NavigationMenuLink>
               </Link>
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button
+              variant="outline"
+              size="icon"
+              className="ml-16 text-center w-full "
+              onClick={toggleTheme}
+            >
+              {themes === "light" ? (
+                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              ) : (
+                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              )}
+              <span className="sr-only">Toggle theme</span>
             </Button>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -350,7 +416,11 @@ const ListItem = React.forwardRef<
           <div className="space-y-1">
             <div className="text-sm font-medium leading-none">{title}</div>
           </div>
-          <span className={`ml-2 ${location.pathname === href ? "text-white" : "text-gray-500"}`}>
+          <span
+            className={`ml-2 ${
+              location.pathname === href ? "text-white" : "text-gray-500"
+            }`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -471,7 +541,6 @@ function SignInIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
 
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
