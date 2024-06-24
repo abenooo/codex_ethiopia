@@ -218,19 +218,19 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-3">
+      <div className="flex justify-center items-center gap-3 py-6">
         <Link to="/">
           {" "}
-          <i className="ri-facebook-circle-fill text-primary text-3xl hover:font-bold "></i>
+          <i className="ri-facebook-fill bg-gray-100 text-primary text-xl  p-2  rounded-full hover:font-bold "></i>
         </Link>
         <Link to="/">
-          <i className="ri-instagram-fill text-primary text-3xl hover:font-bold "></i>
+          <i className="ri-instagram-line bg-gray-100 text-primary text-xl  p-2  rounded-full hover:font-bold"></i>
         </Link>
         <Link to="/">
-          <i className="ri-linkedin-box-fill text-primary text-3xl hover:font-bold  "></i>
+          <i className="ri-linkedin-fill bg-gray-100 text-primary text-xl  p-2  rounded-full hover:font-bold"></i>
         </Link>
         <Link to="/">
-          <i className="ri-telegram-fill text-primary text-3xl hover:font-bold "></i>
+          <i className="ri-telegram-2-fill bg-gray-100 text-primary text-xl  p-2  rounded-full hover:font-bold"></i>
         </Link>
       </div>
       <p className="text-center font-bold text-gray-200">
