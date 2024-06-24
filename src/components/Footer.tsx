@@ -84,34 +84,98 @@ function Footer() {
           <ul>
             <li>
               <Link
-                to="/hire_staff"
+                to="/automation"
                 className="hover:text-primary hover:font-semibold"
               >
-                Hire Permanent Staff
+                Automation
               </Link>
             </li>
             <li>
               <Link
-                to="/staff_augmentation"
+                to="/telegram_bot"
                 className="hover:text-primary hover:font-semibold"
               >
-                Staff Augmentation
+                Telegram Bot
               </Link>
             </li>
             <li>
               <Link
-                to="/sw_outsourcing"
+                to="/personal_blog"
                 className="hover:text-primary hover:font-semibold"
               >
-                Software OutSourcing
+                Personal Blog
               </Link>
             </li>
             <li>
               <Link
-                to="/build_office"
+                to="/ecommerce_site"
                 className="hover:text-primary hover:font-semibold"
               >
-                Build Remote office
+                Ecommerce Site
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/event_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Event Website
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/community_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Community Website
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/consulting_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Consulting Website
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/booking_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Booking Site
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/school_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                School Website
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/entertainment_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Entertainment website
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/news_megazine"
+                className="hover:text-primary hover:font-semibold"
+              >
+                News and Magazine
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/subscription_website"
+                className="hover:text-primary hover:font-semibold"
+              >
+                Subscription website
               </Link>
             </li>
           </ul>
