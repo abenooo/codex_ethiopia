@@ -142,33 +142,33 @@ const TechnologyComponent = () => {
     return paginatedTechs.map((tech: any) => (
       <div
         key={tech.name}
-        className="flex flex-col items-center p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow"
+        className="flex flex-col items-center p-4 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-950"
       >
         <img
           src={tech.logo}
           alt={tech.name}
           className="h-16 w-16 object-contain mb-2"
         />
-        <span className="text-sm font-medium">{tech.name}</span>
+        <span className="text-sm font-medium text-gray-900 dark:text-white">{tech.name}</span>
       </div>
     ));
   };
 
   return (
-    <div className="container mx-auto px-4 py-6 bg-white">
-      <h1 className="text-3xl font-bold mb-4">Technologies</h1>
-      <p className="mb-6 text-gray-600">
+    <div className="container mx-auto px-4 py-6 bg-white dark:bg-gray-950">
+      <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Technologies</h1>
+      <p className="mb-6 text-gray-500 dark:text-gray-400">
         Using the right technology for the right problem is our mantra. This
         principle drives our commitment to innovation and efficiency. In today’s
         fast-paced world, staying ahead means constantly evolving. We leverage
         the latest advancements to tackle challenges head-on.
       </p>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-gray-500 dark:text-gray-400">
         Efficiency and Innovation: Our drive for efficiency and innovation means
         we streamline workflows, optimize resources, and deliver outstanding
         results, providing unparalleled value to our clients.
       </p>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-gray-500 dark:text-gray-400">
         By embracing change and continuously seeking out the best tools and
         practices, we turn challenges into opportunities, paving the way for a
         brighter, more efficient future.
@@ -187,8 +187,8 @@ const TechnologyComponent = () => {
               value={category}
               className={`px-4 py-2 mt-3 text-sm font-medium rounded-full ${
                 activeTab === category
-                  ? "bg-white text-black"
-                  : "bg-gray-700 text-white"
+                  ? "bg-gray-900 dark:bg-white text-white dark:text-black"
+                  : "bg-gray-300 dark:bg-gray-800 text-gray-900 dark:text-white"
               } mx-2`}
             >
               {category}
