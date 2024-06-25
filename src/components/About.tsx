@@ -1,72 +1,72 @@
 export default function About() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-white">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-white dark:bg-gray-950">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-700">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-700 dark:from-white dark:to-gray-300">
                 Discover Our Unique Features
               </h1>
-              <p className="max-w-[600px] text-gray-700 md:text-xl mx-auto">
+              <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl mx-auto">
                 Our features are designed to enhance your productivity and streamline your workflow.
               </p>
             </div>
             <div className="w-full max-w-full space-y-4 mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <InboxIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <InboxIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Smart Inbox</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Smart Inbox</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     Our Smart Inbox feature helps you manage your emails efficiently by prioritizing important emails.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <MergeIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <MergeIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Seamless Integration</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Seamless Integration</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     Seamless Integration allows you to connect with your favorite apps and services without leaving your
                     inbox.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <SettingsIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <SettingsIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Advanced Customization</h2>
-                  <p className= "text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Advanced Customization</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     With Advanced Customization, you can personalize your email client to suit your preferences and work
                     style.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <SearchIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <SearchIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Powerful Search</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Powerful Search</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     Our Powerful Search feature allows you to find any email, contact, or file in seconds.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <LockIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <LockIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Reliable Security</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Reliable Security</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     With Reliable Security, your data is always safe and protected.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border-gray-300 p-4 rounded-lg">
-                  <div className="p-2 bg-gray-100 rounded-full">
-                    <CombineIcon className="text-gray-700 h-6 w-6 mb-2" />
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                  <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <CombineIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">Easy Collaboration</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">Easy Collaboration</h2>
+                  <p className="text-gray-500 dark:text-gray-400">
                     Easy Collaboration allows you to share and edit documents with your team in real time.
                   </p>
                 </div>
