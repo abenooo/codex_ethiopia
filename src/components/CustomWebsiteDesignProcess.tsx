@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // Importing images
 import image1 from "../assets/Process/image1.gif";
@@ -14,8 +13,8 @@ const steps = [
     id: 1,
     title: "Web Strategy",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Web Strategy</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Web Strategy</h3>
         <p>Every web design project starts with a strategy. Using deep-dive research and in-depth insights, we map your path to digital growth.</p>
         <p>In this phase, we:</p>
         <ul className="list-disc list-inside">
@@ -33,8 +32,8 @@ const steps = [
     id: 2,
     title: "Planning & Information Architecture",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Planning & Information Architecture</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Planning & Information Architecture</h3>
         <p>By combining proven techniques and bespoke analysis, we craft a tailor-made solution for your web design project. In this stage, we prioritize user journeys and conversion funnel optimization.</p>
         <p>We do this by:</p>
         <ul className="list-disc list-inside">
@@ -51,8 +50,8 @@ const steps = [
     id: 3,
     title: "Professional Design",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Design</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Design</h3>
         <p>Our professional web design team now work to bring your custom website to life, making sure it makes an instant and lasting impression on your target audience.</p>
         <p>In this stage, we:</p>
         <ul className="list-disc list-inside">
@@ -70,8 +69,8 @@ const steps = [
     id: 4,
     title: "Responsive Development",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Responsive Development</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Responsive Development</h3>
         <p>Our custom web design process prioritizes responsive design. This way, we ensure your website can be viewed across devices and screen sizes to boost accessibility, usability and SEO.</p>
         <p>To ensure your website reaches and satisfies every user, we:</p>
         <ul className="list-disc list-inside">
@@ -88,8 +87,8 @@ const steps = [
     id: 5,
     title: "Quality Assurance (QA)",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Quality Assurance (QA)</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Quality Assurance (QA)</h3>
         <p>Our custom websites are created with measurable results in mind. To achieve this, we make sure every aspect of your website is tested to a T, providing the best possible user experience (UX).</p>
         <p>Our QA process includes:</p>
         <ul className="list-disc list-inside">
@@ -107,8 +106,8 @@ const steps = [
     id: 6,
     title: "Launch & Optimization",
     content: (
-      <div className="text-gray-700">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Launch & Optimization</h3>
+      <div className="text-gray-700 dark:text-gray-400">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Launch & Optimization</h3>
         <p>A website’s performance is only as strong as the support to keep it going. That’s why at Digital Silk, we offer ongoing maintenance and support services to test, upgrade and optimize your website to keep up with evolving trends.</p>
         <p>This ongoing step of our custom web design process includes:</p>
         <ul className="list-disc list-inside">
@@ -127,19 +126,19 @@ const CustomWebsiteDesignProcess = () => {
   const [activeStep, setActiveStep] = useState(1);
 
   return (
-    <div className="container mx-auto py-12">
-      <h1 className="text-3xl font-bold text-center mb-6">Our Custom Website Design Process</h1>
-      <p className="text-center mb-12">
+    <div className="container mx-auto py-12 dark:bg-gray-950">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">Our Custom Website Design Process</h1>
+      <p className="text-center mb-12 text-gray-700 dark:text-gray-400">
         We use proprietary processes and industry standard methodologies to design and develop high-performance digital experiences.
       </p>
       <div className="flex justify-center space-x-8 mb-12 overflow-auto">
         {steps.map((step) => (
           <div
             key={step.id}
-            className={`flex flex-col items-center cursor-pointer ${activeStep === step.id ? "text-blue-500" : "text-gray-600"}`}
+            className={`flex flex-col items-center cursor-pointer ${activeStep === step.id ? "text-primary" : "text-gray-600 dark:text-gray-400"}`}
             onClick={() => setActiveStep(step.id)}
           >
-            <div className={`w-16 h-16 flex items-center justify-center rounded-full ${activeStep === step.id ? "bg-blue-100" : "bg-gray-100"}`}>
+            <div className={`w-16 h-16 flex items-center justify-center rounded-full ${activeStep === step.id ? "bg-primary" : "bg-gray-100 dark:bg-gray-900"}`}>
               <img src={step.image} alt={step.alt} className="w-8 h-8" />
             </div>
             <span className="mt-2 font-semibold text-center">{step.title}</span>
@@ -150,7 +149,7 @@ const CustomWebsiteDesignProcess = () => {
         {steps.map((step) => (
           step.id === activeStep && (
             <React.Fragment key={step.id}>
-              <div className="w-full md:w-1/2 flex flex-col justify-center">
+              <div className="w-full md:w-1/2 flex flex-col justify-center h-full">
                 {step.content}
               </div>
               <div className="w-full md:w-1/2 flex items-center justify-center h-full">
