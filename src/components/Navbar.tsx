@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { FaChevronRight } from "react-icons/fa";
 import imageSrc from "../assets/image.png";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "./DarkTheme";
 
 interface SubMenuItem {
   href: string;
@@ -58,6 +60,16 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState<SubMenuItem[] | null>(null);
+  const { setTheme } = useTheme();
+  const theme = localStorage.getItem("vite-ui-theme");
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
 
   const handleBackClick = () => {
     setActiveSubMenu(null);
@@ -71,7 +83,7 @@ export default function Navbar() {
   const renderSubMenu = (items: SubMenuItem[]) => (
     <div className="flex-1 overflow-auto py-6">
       <button
-        className="mb-4 ml-4 mt-4 text-blue-600 bg-gray-100 hover:text-blue-800 font-semibold"
+        className="mb-4 ml-4 mt-4 text-primary bg-gray-100 dark:bg-gray-900 hover:text-dark font-semibold"
         onClick={handleBackClick}
       >
         ← Back
@@ -83,14 +95,16 @@ export default function Navbar() {
               onClick={() => handleLinkClick(item.href)}
               className={`flex justify-between items-center text-left w-full p-4 rounded-lg font-medium ${
                 location.pathname === item.href
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 hover:bg-gray-200"
+                  ? "bg-primary text-white"
+                  : "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800"
               }`}
             >
               {item.title}
               <FaChevronRight
                 className={`ml-2 h-5 w-5 ${
-                  location.pathname === item.href ? "text-white" : "text-gray-500"
+                  location.pathname === item.href
+                    ? "text-white"
+                    : "text-gray-500 dark:text-gray-400"
                 }`}
               />
             </button>
@@ -118,7 +132,11 @@ export default function Navbar() {
           <div className="flex h-full max-h-screen flex-col">
             <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-800">
               <span>Codex Ethiopia</span>
-              <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMenuOpen(false)}
+              >
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </div>
@@ -138,8 +156,8 @@ export default function Navbar() {
                       location.pathname.startsWith("/education") ||
                       location.pathname.startsWith("/nonprofit-website") ||
                       location.pathname.startsWith("/membership-website")
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
                       setActiveSubMenu(developWebsiteSubMenu);
@@ -147,7 +165,7 @@ export default function Navbar() {
                   >
                     <HomeIcon className="h-5 w-5" />
                     Develop Website
-                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
+                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500 dark:text-gray-400" />
                   </button>
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
@@ -160,8 +178,8 @@ export default function Navbar() {
                       location.pathname.startsWith("/robot-framework") ||
                       location.pathname.startsWith("/testrigor") ||
                       location.pathname.startsWith("/ranorex")
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
                       setActiveSubMenu(automationSubMenu);
@@ -169,7 +187,7 @@ export default function Navbar() {
                   >
                     <UserIcon className="h-5 w-5" />
                     Automation
-                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
+                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500 dark:text-gray-400" />
                   </button>
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
@@ -179,8 +197,8 @@ export default function Navbar() {
                       location.pathname.startsWith("/cyber-security") ||
                       location.pathname.startsWith("/iot") ||
                       location.pathname.startsWith("/machine-learning")
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => {
                       setActiveSubMenu(technologySubMenu);
@@ -188,13 +206,13 @@ export default function Navbar() {
                   >
                     <PackageIcon className="h-5 w-5" />
                     Service
-                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500" />
+                    <FaChevronRight className="ml-auto h-5 w-5 text-gray-500 dark:text-gray-400" />
                   </button>
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/technology"
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => handleLinkClick("/technology")}
                   >
@@ -204,8 +222,8 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/pricing"
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => handleLinkClick("/pricing")}
                   >
@@ -215,8 +233,8 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/about"
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => handleLinkClick("/about")}
                   >
@@ -226,14 +244,28 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all whitespace-nowrap ${
                       location.pathname === "/login"
-                        ? "text-blue-600 bg-gray-100 font-bold"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                        ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                        : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
                     }`}
                     onClick={() => handleLinkClick("/login")}
                   >
                     <SignInIcon className="h-5 w-5" />
-                   Signin
+                    Signin
                   </button>
+
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="w-full "
+                    onClick={toggleTheme}
+                  >
+                    {theme === "light" ? (
+                      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    ) : (
+                      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    )}
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
                 </div>
               </nav>
             )}
@@ -283,7 +315,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/technology" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/technology"
+                    ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                    : ""
                 )}
               >
                 Technology
@@ -295,7 +329,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/pricing" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/pricing"
+                    ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                    : ""
                 )}
               >
                 Pricing
@@ -307,7 +343,9 @@ export default function Navbar() {
               <NavigationMenuLink
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  location.pathname === "/about" ? "text-blue-600 bg-gray-100 font-bold" : ""
+                  location.pathname === "/about"
+                    ? "text-primary bg-gray-100 dark:bg-gray-900 font-bold"
+                    : ""
                 )}
               >
                 About Us
@@ -319,6 +357,21 @@ export default function Navbar() {
               <Link to="/login">
                 <NavigationMenuLink>Login</NavigationMenuLink>
               </Link>
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button
+              variant="outline"
+              size="icon"
+              className="ml-16 text-center w-full"
+              onClick={toggleTheme}
+            >
+              {theme === "light" ? (
+                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              ) : (
+                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              )}
+              <span className="sr-only">Toggle theme</span>
             </Button>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -341,8 +394,8 @@ const ListItem = React.forwardRef<
           className={cn(
             "flex items-center justify-between rounded-md p-3 leading-none no-underline outline-none transition-colors",
             location.pathname === href
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white",
+              ? "bg-primary text-white"
+              : "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-400 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white",
             className
           )}
           {...props}
@@ -350,7 +403,11 @@ const ListItem = React.forwardRef<
           <div className="space-y-1">
             <div className="text-sm font-medium leading-none">{title}</div>
           </div>
-          <span className={`ml-2 ${location.pathname === href ? "text-white" : "text-gray-500"}`}>
+          <span
+            className={`ml-2 ${
+              location.pathname === href ? "text-white" : "text-gray-500 dark:text-gray-400"
+            }`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -370,6 +427,7 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
+
 
 function HomeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -450,7 +508,7 @@ function AboutIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-// sign i icon
+// sign in icon
 function SignInIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -471,7 +529,6 @@ function SignInIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
 
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
