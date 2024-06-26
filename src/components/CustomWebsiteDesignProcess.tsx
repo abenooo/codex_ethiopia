@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-
-// Importing images
-import image1 from "../assets/Process/image1.gif";
-import image2 from "../assets/Process/image2.gif";
 import image3 from "../assets/Process/image3.gif";
-import image4 from "../assets/Process/image4.gif";
-import image5 from "../assets/Process/image5.gif";
-import image6 from "../assets/Process/image6.png";
 
 const steps = [
   {
@@ -25,7 +18,7 @@ const steps = [
         </ul>
       </div>
     ),
-    image: image1,
+    image: image3,
     alt: "CEO discussing web strategy"
   },
   {
@@ -43,7 +36,7 @@ const steps = [
         </ul>
       </div>
     ),
-    image: image2,
+    image: image3,
     alt: "CEO planning information architecture"
   },
   {
@@ -80,7 +73,7 @@ const steps = [
         </ul>
       </div>
     ),
-    image: image4,
+    image: image3,
     alt: "CEO overseeing responsive development"
   },
   {
@@ -99,7 +92,7 @@ const steps = [
         </ul>
       </div>
     ),
-    image: image5,
+    image: image3,
     alt: "CEO ensuring quality assurance"
   },
   {
@@ -117,7 +110,7 @@ const steps = [
         </ul>
       </div>
     ),
-    image: image6,
+    image: image3,
     alt: "CEO discussing launch and optimization"
   }
 ];
