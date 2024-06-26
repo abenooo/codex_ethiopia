@@ -46,7 +46,7 @@ const Blog: FC = () => {
   };
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-[#6366F1] to-[#EC4899] dark:from-gray-800 dark:to-gray-700">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br dark:from-gray-800 dark:to-gray-700">
       <div className="container px-4 md:px-6">
         <h2 className="text-4xl font-bold text-white text-center mb-2 animate-fade-in">
           Explore Our Blog Sites
