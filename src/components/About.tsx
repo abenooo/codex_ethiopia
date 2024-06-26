@@ -14,7 +14,7 @@ export default function About() {
             </div>
             <div className="w-full max-w-full space-y-4 mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <InboxIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
@@ -23,7 +23,7 @@ export default function About() {
                     Our Smart Inbox feature helps you manage your emails efficiently by prioritizing important emails.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <MergeIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
@@ -33,7 +33,7 @@ export default function About() {
                     inbox.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <SettingsIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
@@ -43,7 +43,7 @@ export default function About() {
                     style.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <SearchIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
@@ -52,7 +52,7 @@ export default function About() {
                     Our Powerful Search feature allows you to find any email, contact, or file in seconds.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <LockIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
@@ -61,7 +61,7 @@ export default function About() {
                     With Reliable Security, your data is always safe and protected.
                   </p>
                 </div>
-                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg">
+                <div className="flex flex-col items-center space-y-2 border border-gray-200 dark:border-gray-800 p-4 rounded-lg dark:shadow-md dark:shadow-gray-700">
                   <div className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
                     <CombineIcon className="text-primary h-6 w-6 mb-2" />
                   </div>
