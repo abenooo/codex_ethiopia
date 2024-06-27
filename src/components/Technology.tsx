@@ -237,7 +237,7 @@ const TechnologyComponent = () => {
 
   {Object.entries(technologies).map(([category, techList]) => (
     <TabsContent key={category} value={category} className="block">
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-4 gap-4">
         {renderTechnologies(techList)}
       </div>
     </TabsContent>
