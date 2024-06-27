@@ -126,14 +126,6 @@ const TechnologyComponent = () => {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
-  };
-
   const renderTechnologies = (techList: any) => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
