@@ -126,14 +126,6 @@ const TechnologyComponent = () => {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
-  };
-
   const renderTechnologies = (techList: any) => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -174,53 +166,76 @@ const TechnologyComponent = () => {
         brighter, more efficient future.
       </p>
       <Tabs
-        value={activeTab}
-        onValueChange={(value) => {
-          setActiveTab(value);
-          setCurrentPage(0);
-        }}
-      >
-        <TabsList className="flex overflow-x-auto whitespace-nowrap py-6">
-          {Object.keys(technologies).map((category) => (
-            <TabsTrigger
-              key={category}
-              value={category}
-              className={`px-4 py-2 mt-3 text-sm font-medium rounded-full ${
-                activeTab === category
-                  ? "bg-gray-900 dark:bg-white text-white dark:text-black"
-                  : "bg-gray-300 dark:bg-gray-800 text-gray-900 dark:text-white"
-              } mx-2`}
-            >
-              {category}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {Object.entries(technologies).map(([category, techList]) => (
-          <TabsContent key={category} value={category}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {renderTechnologies(techList)}
-            </div>
-            <div className="flex justify-end gap-5 mt-4">
-              <button
-                onClick={handlePrevPage}
-                disabled={currentPage === 0}
-                className="px-4 py-2 bg-primary text-white rounded disabled:opacity-50"
-              >
-                Prev
-              </button>
-              <button
-                onClick={handleNextPage}
-                disabled={
-                  currentPage * itemsPerPage + itemsPerPage >= techList.length
-                }
-                className="px-4 py-2 bg-primary text-white  rounded disabled:opacity-50"
-              >
-                Next
-              </button>
-            </div>
-          </TabsContent>
+  value={activeTab}
+  onValueChange={(value) => {
+    setActiveTab(value);
+    setCurrentPage(0);
+  }}
+>
+  <div className="flex items-center">
+    {/* Previous Button */}
+    <button
+      onClick={() => {
+        const allKeys = Object.keys(technologies);
+        const currentIndex = allKeys.indexOf(activeTab);
+        if (currentIndex > 0) {
+          setActiveTab(allKeys[currentIndex - 1]);
+        }
+      }}
+      className="p-2 bg-gray-300 rounded-full disabled:opacity-50"
+      disabled={Object.keys(technologies).indexOf(activeTab) === 0}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    {/* Tabs List */}
+    <div className="flex overflow-x-auto w-full">
+      <TabsList className="flex whitespace-nowrap py-2 space-x-2">
+        {Object.keys(technologies).map((category) => (
+          <TabsTrigger
+            key={category}
+            value={category}
+            className={`px-4 py-2 text-sm font-medium rounded-full ${
+              activeTab === category
+                ? "bg-gray-900 text-white"
+                : "bg-gray-300 text-gray-900"
+            }`}
+          >
+            {category}
+          </TabsTrigger>
         ))}
-      </Tabs>
+      </TabsList>
+    </div>
+
+    {/* Next Button */}
+    <button
+      onClick={() => {
+        const allKeys = Object.keys(technologies);
+        const currentIndex = allKeys.indexOf(activeTab);
+        if (currentIndex < allKeys.length - 1) {
+          setActiveTab(allKeys[currentIndex + 1]);
+        }
+      }}
+      className="p-2 bg-gray-300 rounded-full disabled:opacity-50"
+      disabled={Object.keys(technologies).indexOf(activeTab) === Object.keys(technologies).length - 1}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  {Object.entries(technologies).map(([category, techList]) => (
+    <TabsContent key={category} value={category} className="block">
+      <div className="grid grid-cols-4 gap-4">
+        {renderTechnologies(techList)}
+      </div>
+    </TabsContent>
+  ))}
+</Tabs>
+
     </div>
   );
 };
